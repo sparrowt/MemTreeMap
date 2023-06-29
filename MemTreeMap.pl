@@ -47,16 +47,16 @@ my $output_B = q`
                 // Create and draw the visualization.
                 var treemap = new google.visualization.TreeMap(document.getElementById('chart_div'));
                 treemap.draw(data, {
-                    highlightOnMouseOver: true,
+                    highlightOnMouseOver: false,
                     maxPostDepth: 1,
-                    minColor: '#baa',
-                    midColor: '#b60',
-                    maxColor: '#e00',
-                    // showScale: true,
+                    minColor: '#cfc',  // light green
+                    midColor: '#fc0',  // yellow
+                    maxColor: '#d33',  // red
+                    showScale: true,
                     hintOpacity: 0.0,
                     headerHeight: 15,
                     fontColor: 'black',
-                    generateTooltip: showStaticTooltip,
+                    generateTooltip: showStaticTooltip
                 });
 
                 function getSum(dt, column) {
@@ -73,11 +73,16 @@ my $output_B = q`
             body {
                 font-family: sans-serif;
             }
+            h2 {
+                margin-left: 5px;
+            }
             table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
                 padding: 5px;
                 vertical-align: top;
+                margin: 10px 5px;
+                margin-left: 5px;
             }
             ul {
                 margin: 2px;
