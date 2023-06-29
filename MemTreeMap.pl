@@ -58,6 +58,15 @@ my $output_B = q`
                     fontColor: 'black',
                     generateTooltip: showStaticTooltip,
                   });
+
+                  function getSum(dt, column) {
+                    var total = 0;
+                    for (i = 0; i < dt.getNumberOfRows(); i++)
+                        total = total + dt.getValue(i, column);
+                    return total;
+                  }
+                  // Show the total RAM usage of all processes shown
+                  document.getElementById('total_mem').innerText = 'total: ' + parseInt(getSum(data, 2)).toLocaleString() + ' KB';
                 }
         </script>
   </head>
@@ -67,7 +76,7 @@ my $dt_str = strftime("%Y-%m-%d %H:%M:%S UTC", gmtime);
 
 my $output_C = "
   <body>
-    <h2>Memory Usage Visualization at $dt_str</h2>
+    <h2>Memory Usage Visualization at $dt_str <span id='total_mem'></span></h2>
     <div id='chart_div' style='width: 1200px; height: 900px;'></div>
     <p>Tips:
         <ul>
