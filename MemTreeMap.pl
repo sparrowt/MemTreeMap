@@ -36,6 +36,14 @@ my $output_A = q`
 my $output_B = q`
                   ]);
 
+
+                  // Tooltip showing total memory usage
+                  function showStaticTooltip(row, size, value) {
+                    return '<div style="background:#fff; padding:10px; border-style:solid; border-width: thin">'
+                        + 'Total memory usage for &lt;' + data.getValue(row, 0) + '&gt;: ' + parseInt(size).toLocaleString() + ' KB'
+                        + '</div>';
+                  }
+
                   // Create and draw the visualization.
                   var treemap = new google.visualization.TreeMap(document.getElementById('chart_div'));
                   treemap.draw(data, {
@@ -48,6 +56,7 @@ my $output_B = q`
                     hintOpacity: 0.0,
                     headerHeight: 15,
                     fontColor: 'black',
+                    generateTooltip: showStaticTooltip,
                   });
                 }
         </script>
