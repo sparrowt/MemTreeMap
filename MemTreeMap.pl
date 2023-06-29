@@ -89,7 +89,7 @@ my $output_C = "
 </html>
 ";
 
-open TASKLIST, "tasklist /nh /fo CSV |" or die "Can't execute tasklist command $!\n";
+open TASKLIST, "MSYS_NO_PATHCONV=1 tasklist /nh /fo CSV |" or die "Can't execute tasklist command $!\n";
 while (<TASKLIST>) {
         # tasklist output columns: "Image Name","PID","Session Name","Session#","Mem Usage"
         if (m/"(.+)","(.+)",".+",".+","(.+) KB?"/) {
